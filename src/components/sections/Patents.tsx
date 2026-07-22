@@ -2,23 +2,22 @@ import { motion } from "framer-motion";
 import { Award, ExternalLink } from "lucide-react";
 import { Reveal } from "../Reveal";
 import { SectionHeading } from "../SectionHeading";
-import parkingPatent from "@/assets/Smart_Parking_System_Patent.pdf.asset.json";
-import freshnessPatent from "@/assets/Smart_Food_Freshness_Patent.pdf.asset.json";
 
 const patents = [
   {
     title: "Smart Parking System",
     number: "Indian Patent Application No. 202641056865 A",
     status: "Patent Published",
-    url: parkingPatent.url,
+    url: "/assets/Smart_Parking_System_Patent.pdf",
   },
   {
     title: "Smart Food Freshness Detection",
     number: "Indian Patent Application No. 202541119801 A",
     status: "Patent Published",
-    url: freshnessPatent.url,
+    url: "/assets/Smart_Food_Freshness_Patent.pdf",
   },
 ];
+
 
 export function Patents() {
   return (

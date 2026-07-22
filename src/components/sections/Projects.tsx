@@ -8,9 +8,8 @@ import { VideoModal } from "../VideoModal";
 import parkingImg from "@/assets/project-parking.jpg";
 import freshnessImg from "@/assets/project-freshness.jpg";
 import intellinavImg from "@/assets/project-intellinav.jpg";
-import parkingPatent from "@/assets/Smart_Parking_System_Patent.pdf.asset.json";
-import freshnessPatent from "@/assets/Smart_Food_Freshness_Patent.pdf.asset.json";
 import parkingDemo from "@/assets/Smart_Parking_System_Demo.mp4.asset.json";
+
 
 type Project = {
   title: string;
@@ -32,7 +31,7 @@ const projects: Project[] = [
     image: parkingImg,
     stack: ["ESP32", "Ultrasonic Sensors", "QR Auth", "Analytics", "IoT"],
     patented: true,
-    patentUrl: parkingPatent.url,
+    patentUrl: "/assets/Smart_Parking_System_Patent.pdf",
     demoUrl: parkingDemo.url,
   },
   {
@@ -43,8 +42,9 @@ const projects: Project[] = [
     image: freshnessImg,
     stack: ["ESP32", "Sensors", "Shelf-life AI", "Realtime Alerts"],
     patented: true,
-    patentUrl: freshnessPatent.url,
+    patentUrl: "/assets/Smart_Food_Freshness_Patent.pdf",
   },
+
   {
     title: "IntelliNav Robotics Simulator",
     tag: "Robotics · AI",

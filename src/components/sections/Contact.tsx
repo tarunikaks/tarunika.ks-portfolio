@@ -44,9 +44,10 @@ export function Contact() {
               <ul className="mt-6 space-y-3">
                 {items.map(({ icon: Icon, label, value, href }) => {
                   const inner = (
-                    <div className="group flex items-center gap-3 rounded-xl border border-border bg-surface/40 p-3 transition hover:border-primary/50">
-                      <div className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-primary/25 to-accent/20 text-primary">
-                        <Icon size={16} />
+                    <div className="group flex items-center gap-4 rounded-xl border border-border bg-surface/40 p-3 transition hover:border-primary/50">
+                      <div className="relative grid h-12 w-12 shrink-0 place-items-center rounded-full bg-gradient-to-br from-primary/30 to-accent/30 text-primary shadow-glow ring-1 ring-primary/30 transition-all duration-300 group-hover:scale-110 group-hover:ring-primary/70">
+                        <span className="absolute inset-0 rounded-full bg-primary/20 blur-md opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                        <Icon size={18} className="relative" />
                       </div>
                       <div className="min-w-0">
                         <p className="text-[10px] uppercase tracking-widest text-muted-foreground">
@@ -71,6 +72,7 @@ export function Contact() {
                   );
                 })}
               </ul>
+
             </div>
           </Reveal>
 

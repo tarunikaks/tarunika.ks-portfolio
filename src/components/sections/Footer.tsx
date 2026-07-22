@@ -37,9 +37,9 @@ export function Footer() {
           </div>
 
           <div className="font-display text-sm text-muted-foreground">
-            © {year} <span className="gradient-text font-bold">Tarunika K S</span> · Crafted with
-            care in Chennai.
+            © {year} <span className="gradient-text font-bold">Tarunika K S</span>
           </div>
+
         </div>
       </div>
     </footer>
