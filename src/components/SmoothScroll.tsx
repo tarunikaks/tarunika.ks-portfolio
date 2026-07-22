@@ -8,10 +8,11 @@ export function SmoothScroll() {
     if (reduce) return;
 
     const lenis = new Lenis({
-      duration: 1.15,
-      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      duration: 0.7,
+      easing: (t: number) => 1 - Math.pow(1 - t, 3),
       smoothWheel: true,
-      touchMultiplier: 1.4,
+      wheelMultiplier: 1.2,
+      touchMultiplier: 1.6,
     });
 
     let raf = 0;
@@ -40,7 +41,7 @@ export function scrollToId(id: string) {
   if (!el) return;
   const lenis = (window as unknown as { __lenis?: Lenis }).__lenis;
   if (lenis) {
-    lenis.scrollTo(el, { offset: -70, duration: 1.2 });
+    lenis.scrollTo(el, { offset: -70, duration: 0.8 });
   } else {
     el.scrollIntoView({ behavior: "smooth", block: "start" });
   }
