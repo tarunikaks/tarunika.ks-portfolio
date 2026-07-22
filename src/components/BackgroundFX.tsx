@@ -1,19 +1,35 @@
 import { useMemo } from "react";
 
 /**
- * Ambient background: animated gradient blobs + subtle particle field.
- * Fixed, low-opacity, doesn't interfere with content.
+ * Ambient background: gradient blobs + subtle particle field + falling code rain
+ * (matrix-style glyphs) reminiscent of a developer terminal.
  */
+const CODE_GLYPHS = ["{", "}", "<", ">", "/", ";", "[", "]", "(", ")", "0", "1"];
+
 export function BackgroundFX() {
   const particles = useMemo(
     () =>
-      Array.from({ length: 28 }, (_, i) => ({
+      Array.from({ length: 22 }, (_, i) => ({
         id: i,
         left: Math.random() * 100,
         top: Math.random() * 100,
         size: 1 + Math.random() * 2,
         delay: Math.random() * 10,
         duration: 8 + Math.random() * 8,
+      })),
+    [],
+  );
+
+  const codeRain = useMemo(
+    () =>
+      Array.from({ length: 42 }, (_, i) => ({
+        id: i,
+        left: Math.random() * 100,
+        char: CODE_GLYPHS[Math.floor(Math.random() * CODE_GLYPHS.length)],
+        duration: 9 + Math.random() * 10,
+        delay: Math.random() * 12,
+        size: 12 + Math.random() * 10,
+        opacity: 0.18 + Math.random() * 0.22,
       })),
     [],
   );
@@ -39,6 +55,24 @@ export function BackgroundFX() {
           animationDelay: "-12s",
         }}
       />
+
+      {/* Code rain */}
+      {codeRain.map((c) => (
+        <span
+          key={c.id}
+          className="absolute font-mono font-semibold text-primary"
+          style={{
+            left: `${c.left}%`,
+            top: "-10%",
+            fontSize: `${c.size}px`,
+            opacity: c.opacity,
+            animation: `code-fall ${c.duration}s linear ${c.delay}s infinite`,
+            textShadow: "0 0 8px color-mix(in oklab, var(--primary) 60%, transparent)",
+          }}
+        >
+          {c.char}
+        </span>
+      ))}
 
       {/* Grid overlay */}
       <div
