@@ -236,6 +236,12 @@
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
 }
+@keyframes code-fall {
+  0% { transform: translateY(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(115vh); opacity: 0; }
+}
 
 @utility animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
 @utility animate-blob { animation: blob 18s ease-in-out infinite; }

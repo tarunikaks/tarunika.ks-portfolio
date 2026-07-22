@@ -81,7 +81,7 @@ export function About() {
                 blend software, AI, and hardware into real, useful products. My work spans
                 robotics simulators, IoT platforms and full-stack applications — reinforced by
                 hackathons, patent filings, and industry-led mentoring at{" "}
-                <span className="text-foreground">Cisco BOOST</span>. I care about clean
+                <span className="font-sans font-semibold text-foreground">Cisco BOOST</span>. I care about clean
                 engineering, elegant interfaces, and shipping ideas that matter.
               </p>
               <div className="mt-6 flex flex-wrap gap-2">

@@ -21,8 +21,8 @@ export function Reveal({
     <motion.div
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1], delay }}
       className={className}
     >
       {children}
@@ -43,8 +43,8 @@ export function StaggerParent({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ staggerChildren: 0.08, delayChildren: delay }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ staggerChildren: 0.05, delayChildren: delay }}
       className={className}
     >
       {children}
@@ -56,7 +56,7 @@ export function StaggerChild({ children, className }: { children: ReactNode; cla
   return (
     <motion.div
       variants={variants}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
       className={className}
     >
       {children}
