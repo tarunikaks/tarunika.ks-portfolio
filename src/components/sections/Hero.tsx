@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Download, Github, Linkedin, Mail, MapPin } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import { scrollToId } from "../SmoothScroll";
-import resumeAsset from "@/assets/Tarunika_CV_Final.pdf.asset.json";
 
 const techIcons = ["React", "Python", "IoT", "AI", "Java", "SQL", "Figma", "Git"];
 
@@ -84,7 +83,7 @@ export function Hero() {
             className="mt-9 flex flex-wrap items-center justify-center gap-3"
           >
             <a
-              href={resumeAsset.url}
+              href="/assets/Tarunika_CV_Final.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-primary to-accent px-5 py-3 text-sm font-semibold text-primary-foreground btn-glow"
@@ -105,39 +104,6 @@ export function Hero() {
             >
               Get In Touch
             </button>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.75 }}
-            className="mt-10 flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground"
-          >
-            <a
-              href="https://github.com/tarunikaks"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 rounded-full glass px-4 py-2 transition hover:text-foreground hover:border-primary/50"
-            >
-              <Github size={15} className="transition-transform group-hover:scale-110" /> GitHub
-            </a>
-            <a
-              href="https://linkedin.com/in/tarunika-k-s"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 rounded-full glass px-4 py-2 transition hover:text-foreground hover:border-primary/50"
-            >
-              <Linkedin size={15} className="transition-transform group-hover:scale-110" /> LinkedIn
-            </a>
-            <a
-              href="mailto:kstarunika1511@gmail.com"
-              className="group inline-flex items-center gap-2 rounded-full glass px-4 py-2 transition hover:text-foreground hover:border-primary/50"
-            >
-              <Mail size={15} className="transition-transform group-hover:scale-110" /> Email
-            </a>
-            <span className="inline-flex items-center gap-2 rounded-full glass px-4 py-2">
-              <MapPin size={15} /> Chennai, Tamil Nadu
-            </span>
           </motion.div>
         </div>
 
