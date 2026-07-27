@@ -44,7 +44,7 @@ export function About() {
         <SectionHeading
           eyebrow="About"
           title="A quick introduction"
-          description="Motivated Computer Science and Design undergraduate with interests in Software Engineering, AI, Cybersecurity, IoT and Intelligent Systems."
+          description="Motivated Computer Science and Design undergraduate with interests in Software Engineering, UI/UX Design, AI, Cybersecurity, IoT and Intelligent Systems."
         />
 
         <div className="grid gap-6 lg:grid-cols-5">
@@ -78,7 +78,7 @@ export function About() {
               </div>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground">
                 I'm a Computer Science and Design student passionate about building systems that
-                blend software, AI, and hardware into real, useful products. My work spans
+                blend software, UI/UX Design, AI, and hardware into real, useful products. My work spans
                 robotics simulators, IoT platforms and full-stack applications — reinforced by
                 hackathons, patent filings, and industry-led mentoring at Cisco BOOST. I care about clean
                 engineering, elegant interfaces, and shipping ideas that matter.
