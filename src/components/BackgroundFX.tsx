@@ -22,14 +22,16 @@ export function BackgroundFX() {
 
   const codeRain = useMemo(
     () =>
-      Array.from({ length: 42 }, (_, i) => ({
+      Array.from({ length: 28 }, (_, i) => ({
         id: i,
         left: Math.random() * 100,
+        top: Math.random() * 100,
         char: CODE_GLYPHS[Math.floor(Math.random() * CODE_GLYPHS.length)],
-        duration: 9 + Math.random() * 10,
-        delay: Math.random() * 12,
-        size: 12 + Math.random() * 10,
+        duration: 22 + Math.random() * 22,
+        delay: -Math.random() * 20,
+        size: 9 + Math.random() * 5,
         opacity: 0.18 + Math.random() * 0.22,
+        driftX: (Math.random() - 0.5) * 160,
       })),
     [],
   );
@@ -60,14 +62,16 @@ export function BackgroundFX() {
       {codeRain.map((c) => (
         <span
           key={c.id}
-          className="absolute font-mono font-semibold text-primary"
+          className="absolute font-mono font-medium text-primary"
           style={{
             left: `${c.left}%`,
-            top: "-10%",
+            top: `${c.top}%`,
             fontSize: `${c.size}px`,
             opacity: c.opacity,
-            animation: `code-fall ${c.duration}s linear ${c.delay}s infinite`,
-            textShadow: "0 0 8px color-mix(in oklab, var(--primary) 60%, transparent)",
+            ["--drift-x" as string]: `${c.driftX}px`,
+            ["--glyph-opacity" as string]: c.opacity,
+            animation: `code-drift ${c.duration}s ease-in-out ${c.delay}s infinite`,
+            textShadow: "0 0 6px color-mix(in oklab, var(--primary) 40%, transparent)",
           }}
         >
           {c.char}
