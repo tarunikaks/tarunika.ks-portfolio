@@ -8,13 +8,13 @@ const patents = [
     title: "Smart Parking System",
     number: "Indian Patent Application No. 202641056865 A",
     status: "Patent Published",
-    url: "/assets/Smart_Parking_System_Patent.pdf",
+    url: "https://drive.google.com/file/d/1WqLsadz8pbG38z5qydnSYdNhn-cl6Ax8/view?usp=drive_link",
   },
   {
     title: "Smart Food Freshness Detection",
     number: "Indian Patent Application No. 202541119801 A",
     status: "Patent Published",
-    url: "/assets/Smart_Food_Freshness_Patent.pdf",
+    url: "https://drive.google.com/file/d/15dfpNYog5ZPD1ZdlfELQxG7RbpeRvibG/view?usp=sharing",
   },
 ];
 

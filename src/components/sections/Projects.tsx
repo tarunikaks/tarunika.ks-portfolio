@@ -1,12 +1,13 @@
 import { useRef, type MouseEvent } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import { Play, Sparkles } from "lucide-react";
 import { Reveal } from "../Reveal";
 import { SectionHeading } from "../SectionHeading";
 
 import parkingImg from "@/assets/project-parking.jpg";
 import freshnessImg from "@/assets/project-freshness.jpg";
 import intellinavImg from "@/assets/project-intellinav.jpg";
+
 
 type Project = {
   title: string;
@@ -15,6 +16,7 @@ type Project = {
   image: string;
   stack: string[];
   patented?: boolean;
+  demoUrl?: string;
 };
 
 const projects: Project[] = [
@@ -26,6 +28,7 @@ const projects: Project[] = [
     image: parkingImg,
     stack: ["ESP32", "Ultrasonic Sensors", "QR Auth", "Analytics", "IoT"],
     patented: true,
+    demoUrl: "https://drive.google.com/file/d/1AFxn8puRWQxy8RE6tPjL1bZqLW-4Orkd/view?usp=sharing",
   },
   {
     title: "Smart Food Freshness Detection",
@@ -43,6 +46,7 @@ const projects: Project[] = [
       "Intelligent robotics simulation with A* pathfinding, autonomous navigation, gesture-based control, human-aware obstacle avoidance and real-time telemetry.",
     image: intellinavImg,
     stack: ["A* Pathfinding", "Gesture Control", "Human-aware Nav", "Telemetry"],
+    demoUrl: "https://drive.google.com/file/d/1pCMd8r0E55eJG3ykETOn_CzZncQy5wOS/view?usp=sharing",
   },
 ];
 
@@ -128,6 +132,19 @@ function TiltCard({ project }: { project: Project }) {
               </span>
             ))}
           </div>
+
+          {project.demoUrl && (
+            <div className="mt-5">
+              <a
+                href={project.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-primary to-accent px-4 py-2 text-xs font-semibold text-primary-foreground btn-glow"
+              >
+                <Play size={14} /> Watch Demo
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </motion.div>
