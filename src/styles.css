@@ -236,11 +236,20 @@
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
 }
-@keyframes code-fall {
-  0% { transform: translateY(0); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateY(115vh); opacity: 0; }
+@keyframes code-drift {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  15% { opacity: var(--glyph-opacity, 0.4); }
+  50% {
+    transform: translate3d(var(--drift-x, 20px), 40vh, 0) rotate(8deg);
+  }
+  85% { opacity: var(--glyph-opacity, 0.4); }
+  100% {
+    transform: translate3d(calc(var(--drift-x, 20px) * -0.5), 90vh, 0) rotate(-6deg);
+    opacity: 0;
+  }
 }
 
 @utility animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
