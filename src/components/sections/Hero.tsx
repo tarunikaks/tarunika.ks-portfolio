@@ -56,16 +56,17 @@ export function Hero() {
             Hi, I'm <span className="gradient-text animate-gradient-shift">Tarunika K S</span>
           </motion.h1>
 
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25 }}
-            className="mt-5 text-base text-muted-foreground sm:text-lg md:text-xl"
+            className="mt-5 space-y-1 text-base text-muted-foreground sm:text-lg md:text-xl"
           >
-            <span className="text-foreground">
+            <p className="text-foreground">Computer Science and Design Student</p>
+            <p className="text-foreground">
               Aspiring Software Engineer | UI/UX Designer | AI & Robotics Enthusiast
-            </span>
-          </motion.p>
+            </p>
+          </motion.div>
 
           <motion.p
             initial={{ opacity: 0 }}
