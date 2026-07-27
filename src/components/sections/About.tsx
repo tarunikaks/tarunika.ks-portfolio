@@ -80,8 +80,7 @@ export function About() {
                 I'm a Computer Science and Design student passionate about building systems that
                 blend software, AI, and hardware into real, useful products. My work spans
                 robotics simulators, IoT platforms and full-stack applications — reinforced by
-                hackathons, patent filings, and industry-led mentoring at{" "}
-                <span className="font-sans font-semibold text-foreground">Cisco BOOST</span>. I care about clean
+                hackathons, patent filings, and industry-led mentoring at Cisco BOOST. I care about clean
                 engineering, elegant interfaces, and shipping ideas that matter.
               </p>
               <div className="mt-6 flex flex-wrap gap-2">

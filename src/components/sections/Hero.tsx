@@ -60,10 +60,11 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25 }}
-            className="mt-5 text-lg text-muted-foreground sm:text-xl"
+            className="mt-5 text-base text-muted-foreground sm:text-lg md:text-xl"
           >
-            Computer Science & Design Student ·{" "}
-            <span className="text-foreground">Software · AI · IoT · Intelligent Systems</span>
+            <span className="text-foreground">
+              Aspiring Software Engineer | UI/UX Designer | AI & Robotics Enthusiast
+            </span>
           </motion.p>
 
           <motion.p
@@ -83,7 +84,7 @@ export function Hero() {
             className="mt-9 flex flex-wrap items-center justify-center gap-3"
           >
             <a
-              href="/assets/Tarunika_CV_Final.pdf"
+              href="https://drive.google.com/file/d/1uI-N9kGvbqxRLcQKenjeul-xK8icWv2R/view?usp=drive_link"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-primary to-accent px-5 py-3 text-sm font-semibold text-primary-foreground btn-glow"
