@@ -77,11 +77,11 @@ export function About() {
                 <span className="text-xs font-semibold uppercase tracking-widest">Profile</span>
               </div>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                I'm a Computer Science and Design student passionate about building systems that
-                blend software, UI/UX Design, AI, and hardware into real, useful products. My work spans
-                robotics simulators, IoT platforms and full-stack applications — reinforced by
-                hackathons, patent filings, and industry-led mentoring at Cisco BOOST. I care about clean
-                engineering, elegant interfaces, and shipping ideas that matter.
+                Computer Science and Design student and aspiring Software Engineer passionate about
+                building innovative digital solutions. Skilled in AI/ML, UI/UX design, full-stack
+                development, and the basics of Cloud Computing, with hands-on experience developing
+                real-world projects and participating in hackathons. Always eager to learn, innovate,
+                and create technology that makes a meaningful impact.
               </p>
               <div className="mt-6 flex flex-wrap gap-2">
                 {coreConcepts.map((c) => (
