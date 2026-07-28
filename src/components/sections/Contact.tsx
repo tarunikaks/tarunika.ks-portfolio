@@ -36,28 +36,37 @@ export function Contact() {
     }
 
     setStatus("sending");
+    const payload = {
+      name,
+      email,
+      _replyto: email,
+      _subject: `Portfolio inquiry: ${subject}`,
+      _captcha: "false",
+      _template: "table",
+      subject,
+      message,
+    };
     try {
       const res = await fetch(FORMSUBMIT_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          name,
-          email,
-          _replyto: email,
-          _subject: `Portfolio inquiry: ${subject}`,
-          subject,
-          message,
-        }),
+        body: JSON.stringify(payload),
       });
-      const json = (await res.json().catch(() => ({}))) as { success?: string | boolean };
+      const json = (await res.json().catch(() => ({}))) as { success?: string | boolean; message?: string };
       const ok = res.ok && (json.success === true || json.success === "true");
-      if (!ok) throw new Error("Send failed");
+      if (!ok) throw new Error(json.message || "Send failed");
       setStatus("success");
       toast.success("Message sent! I'll get back to you soon.");
       form.reset();
     } catch {
-      setStatus("error");
-      toast.error("Something went wrong. Please try again or email me directly.");
+      // Fallback: open the user's email client with prefilled content so the
+      // message still reaches the inbox even if the AJAX endpoint is blocked
+      // or awaiting first-time activation.
+      const body = `Name: ${name}%0AEmail: ${email}%0A%0A${encodeURIComponent(message)}`;
+      window.location.href = `mailto:kstarunika1511@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+      setStatus("success");
+      toast.success("Opening your email app to complete sending…");
+      form.reset();
     }
   };
 
