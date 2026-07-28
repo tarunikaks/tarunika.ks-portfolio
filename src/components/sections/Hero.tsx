@@ -64,7 +64,7 @@ export function Hero() {
           >
             <p className="text-foreground">Computer Science and Design Student</p>
             <p className="text-foreground">
-              Aspiring Software Engineer | UI/UX Designer | AI & Robotics Enthusiast
+              Aspiring Software Engineer | Full-Stack Developer | UI/UX Designer | AI & Robotics Enthusiast
             </p>
           </motion.div>
 
