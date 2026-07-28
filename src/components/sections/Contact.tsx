@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from "react";
-import { Mail, MapPin, Send } from "lucide-react";
+import { Loader2, Mail, MapPin, Send } from "lucide-react";
+import { toast } from "sonner";
 import { Reveal } from "../Reveal";
 import { SectionHeading } from "../SectionHeading";
 
@@ -8,18 +9,56 @@ const items = [
   { icon: MapPin, label: "Location", value: "Chennai, India", href: null },
 ];
 
-export function Contact() {
-  const [sent, setSent] = useState(false);
+// FormSubmit AJAX endpoint — sends form submissions to this inbox.
+// No signup required. First submission triggers a one-time activation email
+// from FormSubmit to the recipient; click the link inside to activate.
+const FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/kstarunika1511@gmail.com";
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+export function Contact() {
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const name = data.get("name");
-    const email = data.get("email");
-    const message = data.get("message");
-    const body = encodeURIComponent(`Hi Tarunika,\n\n${message}\n\n— ${name} (${email})`);
-    window.location.href = `mailto:kstarunika1511@gmail.com?subject=Portfolio%20inquiry%20from%20${encodeURIComponent(String(name ?? ""))}&body=${body}`;
-    setSent(true);
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const name = String(data.get("name") ?? "").trim();
+    const email = String(data.get("email") ?? "").trim();
+    const subject = String(data.get("subject") ?? "").trim();
+    const message = String(data.get("message") ?? "").trim();
+
+    if (!name || !email || !subject || !message) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+
+    setStatus("sending");
+    try {
+      const res = await fetch(FORMSUBMIT_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          _replyto: email,
+          _subject: `Portfolio inquiry: ${subject}`,
+          subject,
+          message,
+        }),
+      });
+      const json = (await res.json().catch(() => ({}))) as { success?: string | boolean };
+      const ok = res.ok && (json.success === true || json.success === "true");
+      if (!ok) throw new Error("Send failed");
+      setStatus("success");
+      toast.success("Message sent! I'll get back to you soon.");
+      form.reset();
+    } catch {
+      setStatus("error");
+      toast.error("Something went wrong. Please try again or email me directly.");
+    }
   };
 
   return (
@@ -54,11 +93,7 @@ export function Contact() {
                   );
                   return (
                     <li key={label}>
-                      {href ? (
-                        <a href={href}>{inner}</a>
-                      ) : (
-                        inner
-                      )}
+                      {href ? <a href={href}>{inner}</a> : inner}
                     </li>
                   );
                 })}
@@ -72,6 +107,7 @@ export function Contact() {
               <div className="mt-6 space-y-4">
                 <Field name="name" label="Name" placeholder="Your name" required />
                 <Field name="email" type="email" label="Email" placeholder="you@company.com" required />
+                <Field name="subject" label="Subject" placeholder="What is this about?" required />
                 <div>
                   <label className="mb-1.5 block text-xs font-medium uppercase tracking-widest text-muted-foreground">
                     Message
@@ -87,10 +123,33 @@ export function Contact() {
               </div>
               <button
                 type="submit"
-                className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-accent px-5 py-3 text-sm font-semibold text-primary-foreground btn-glow"
+                disabled={status === "sending"}
+                className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-accent px-5 py-3 text-sm font-semibold text-primary-foreground btn-glow disabled:cursor-not-allowed disabled:opacity-70"
               >
-                {sent ? "Opening your email…" : "Send Message"} <Send size={14} />
+                {status === "sending" ? (
+                  <>
+                    Sending… <Loader2 size={14} className="animate-spin" />
+                  </>
+                ) : status === "success" ? (
+                  <>
+                    Message sent <Send size={14} />
+                  </>
+                ) : (
+                  <>
+                    Send Message <Send size={14} />
+                  </>
+                )}
               </button>
+              {status === "success" && (
+                <p className="mt-3 text-center text-xs text-primary">
+                  Thanks! Your message has been delivered.
+                </p>
+              )}
+              {status === "error" && (
+                <p className="mt-3 text-center text-xs text-destructive">
+                  Couldn't send right now. Please try again.
+                </p>
+              )}
             </form>
           </Reveal>
         </div>
