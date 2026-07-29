@@ -44,7 +44,6 @@ export function About() {
         <SectionHeading
           eyebrow="About"
           title="A quick introduction"
-          description="Motivated Computer Science and Design undergraduate with interests in Software Engineering, UI/UX Design, AI, Cybersecurity, IoT and Intelligent Systems."
         />
 
         <div className="grid gap-6 lg:grid-cols-5">
