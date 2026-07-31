@@ -223,8 +223,8 @@ h1.hero-title{margin-top:1.5rem;font-size:clamp(2.5rem,8vw,4.5rem);font-weight:7
 /* ============ Achievements timeline ============ */
 .tl{position:relative}
 .tl .spine{position:absolute;left:1rem;top:0;height:100%;width:1px;background:linear-gradient(to bottom,color-mix(in oklab,var(--primary) 60%,transparent),color-mix(in oklab,var(--accent) 40%,transparent),transparent)}
-.tl-item{position:relative;display:flex;flex-direction:column;gap:1rem}
-.tl-node{position:absolute;left:1rem;transform:translateX(-50%);display:grid;place-items:center;height:2.25rem;width:2.25rem;border-radius:9999px;background:linear-gradient(135deg,var(--primary),var(--accent));color:var(--primary-foreground);box-shadow:var(--shadow-glow)}
+.tl-item{position:relative;display:flex;flex-direction:column;gap:1rem;justify-content:space-between}
+.tl-node{position:absolute;left:1rem;z-index:3;transform:translateX(-50%);display:grid;place-items:center;height:2.25rem;width:2.25rem;border-radius:9999px;background:linear-gradient(135deg,var(--primary),var(--accent));color:var(--primary-foreground);box-shadow:var(--shadow-glow)}
 .tl-card{margin-left:3rem;flex:1;border-radius:1rem;padding:1.25rem}
 .tl-card h3{font-size:1rem;font-weight:700}
 .tl-card p{margin-top:.35rem;font-size:.85rem;color:var(--muted-foreground)}
